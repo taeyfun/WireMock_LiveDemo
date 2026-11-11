@@ -1,0 +1,19 @@
+{
+  "name": "Berlin weather forecast for 13 November 2026",
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/weather",
+    "queryParameters": {
+      "city": { "equalTo": "Berlin" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    },
+    "bodyFileName": "weather-berlin.json",
+    "fixedDelayMilliseconds": 350
+  }
+}

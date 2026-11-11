@@ -1,4 +1,5 @@
 node_modules/
 dist/
 *.tsbuildinfo
+wiremock/wiremock-standalone-*.jar
 .DS_Store

@@ -2,11 +2,12 @@
 import { computed, onMounted, ref } from 'vue'
 import PersonalData from './components/PersonalData.vue'
 import StudyData from './components/StudyData.vue'
+import WeatherCard from './components/WeatherCard.vue'
 import type { StudentProfile } from './types'
 
 const defaults: StudentProfile = {
   firstName: 'Mila', lastName: 'Schneider', email: 'mila.schneider@stud.hsnordtal.de', phone: '+49 151 2345 6789',
-  birthDate: '2002-04-18', address: 'Lindenstraße 24', postalCity: '24103 Kiel', studentId: '2024 018 672',
+  birthDate: '2002-04-18', address: 'Musterstraße 24', postalCity: '10115 Berlin', studentId: '2024 018 672',
   degree: 'B. Sc. Medieninformatik', faculty: 'Fachbereich Informatik', semester: '4. Fachsemester', startTerm: 'Wintersemester 2024', studyStatus: 'Aktiv',
 }
 const profile = ref<StudentProfile>({ ...defaults })
@@ -18,7 +19,14 @@ const fullName = computed(() => `${profile.value.firstName} ${profile.value.last
 onMounted(() => {
   try {
     const stored = localStorage.getItem('nordtal-student-profile')
-    if (stored) profile.value = { ...defaults, ...JSON.parse(stored) as Partial<StudentProfile> }
+    if (stored) {
+      const savedProfile = JSON.parse(stored) as Partial<StudentProfile>
+      if (savedProfile.postalCity?.toLowerCase().includes('kiel')) {
+        savedProfile.address = defaults.address
+        savedProfile.postalCity = defaults.postalCity
+      }
+      profile.value = { ...defaults, ...savedProfile }
+    }
   } catch { localStorage.removeItem('nordtal-student-profile') }
 })
 function startEditing() { editing.value = true; saved.value = false }
@@ -85,6 +93,8 @@ function cancelEditing() {
           <PersonalData v-model="profile" :editing="editing" />
           <StudyData v-model="profile" :editing="editing" />
         </div>
+
+        <WeatherCard />
 
         <footer class="page-footer"><span>Fragen zu deinen Daten? <a href="mailto:studierendenservice@hsnordtal.de">Der Studierendenservice hilft dir gern.</a></span><span>Deine Daten werden vertraulich behandelt.</span></footer>
       </div>

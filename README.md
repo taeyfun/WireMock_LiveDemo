@@ -25,3 +25,23 @@ Vite zeigt anschließend die lokale Adresse an (standardmäßig <http://localhos
 npm run build
 npm run preview
 ```
+
+## Wetter mit WireMock simulieren
+
+Die Profilseite zeigt für Berlin ein festes Demo-Wetterszenario. Die Antwort liegt in `wiremock/__files/weather-berlin.json`; das Mapping liegt in `wiremock/mappings/weather-berlin.json`.
+
+Voraussetzung ist ein installiertes Java (JRE oder JDK). Im Projektverzeichnis WireMock starten:
+
+```powershell
+.\wiremock\start.ps1
+```
+
+Das Skript lädt beim ersten Start WireMock Standalone 3.13.2 als JAR herunter und startet es auf Port `8080`. Der JAR bleibt lokal und wird nicht ins Git-Repository aufgenommen. Unter macOS/Linux lautet der Startbefehl `sh wiremock/start.sh` (dort werden `curl` oder `wget` benötigt). Beenden mit `Ctrl+C`.
+
+Der simulierte Endpunkt ist `GET http://localhost:8080/api/weather?city=Berlin`. Für den lokalen Vite-Server eine `.env.local` mit folgender Zeile anlegen, damit der Browser WireMock direkt abfragt:
+
+```env
+VITE_WEATHER_API_URL=http://localhost:8080
+```
+
+Anschließend Vite neu starten. Ohne diese Einstellung erwartet die Anwendung den Endpunkt auf derselben Origin, etwa hinter einem Reverse Proxy.

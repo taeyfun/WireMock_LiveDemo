@@ -1,0 +1,20 @@
+{
+  "location": "Berlin",
+  "current": {
+    "date": "2026-11-13",
+    "label": "Heute",
+    "condition": "partly-cloudy",
+    "description": "Wolkig mit Auflockerungen",
+    "temperature": 8,
+    "high": 10,
+    "low": 5,
+    "rainChance": 20
+  },
+  "forecast": [
+    { "date": "2026-11-14", "label": "Samstag", "condition": "rain", "description": "Leichter Regen", "high": 9, "low": 4, "rainChance": 75 },
+    { "date": "2026-11-15", "label": "Sonntag", "condition": "cloudy", "description": "Stark bewölkt", "high": 7, "low": 3, "rainChance": 35 },
+    { "date": "2026-11-16", "label": "Montag", "condition": "sun", "description": "Heiter", "high": 8, "low": 2, "rainChance": 5 },
+    { "date": "2026-11-17", "label": "Dienstag", "condition": "partly-cloudy", "description": "Wolkig", "high": 9, "low": 4, "rainChance": 20 },
+    { "date": "2026-11-18", "label": "Mittwoch", "condition": "rain", "description": "Regenschauer", "high": 8, "low": 5, "rainChance": 60 }
+  ]
+}
