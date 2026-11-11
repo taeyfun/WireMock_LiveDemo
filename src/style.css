@@ -83,7 +83,7 @@ h1 { margin-bottom: 7px; color: #173655; font-family: 'Manrope', sans-serif; fon
 .status-pill span { width: 6px; height: 6px; border-radius: 50%; background: #56a17e; }
 .edit-notice { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 11px 14px; border: 1px solid #d8e5ef; border-radius: 5px; color: #48627c; background: #f0f5f9; font-size: 11px; }
 .edit-notice svg { width: 16px; height: 16px; fill: none; stroke: #6685a3; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
-.profile-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: start; gap: 22px; }
+.profile-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: stretch; gap: 22px; }
 .weather-card { margin-top: 22px; padding: 24px 27px 17px; border: 1px solid #e3e9ee; border-radius: 7px; background: #fff; }
 .weather-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .weather-kicker { margin-bottom: 5px; color: #788ca0; font-size: 11px; }
